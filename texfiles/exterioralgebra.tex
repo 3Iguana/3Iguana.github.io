@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{dsfont}
+\usepackage[spanish]{babel}
+\usepackage[a4paper, total={6in, 8.5in}]{geometry}
+\usepackage{multicol}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{calrsfs}
+\usepackage{mathrsfs}
+\usepackage{calligra}
+
+ \usepackage{layout}
+
+ \theoremstyle{plain}
+ \newtheorem{thm}{Teorema}
+ \newtheorem{prop}{Proposición}
+ \newtheorem{lema}{Lema}
+ \newtheorem{coro}{Corolario}
+
+ \theoremstyle{definition}
+ \newtheorem{defn}{Definición}
+ \newtheorem{exmp}{Ejemplo}
+  \newtheorem{ex}{Problema}
+
+ \theoremstyle{remark}
+ \newtheorem{nota}{Nota}
+
+
+ \newcommand{\ba}{\mathscr{B}}
+%%COMANDOS PARA CAMPOS
+ \renewcommand{\Re}{\mathbb{R}}
+ \newcommand{\Z}{\mathbb{Z}}
+ \newcommand{\Fi}{\mathbb{F}}
+%%COMANDOS PARA ÁLGEBRAS DE LIE
+  \newcommand{\g}{\mathfrak{{g}}}
+  \newcommand{\h}{\mathfrak{h}}
+  \newcommand{\so}{\mathfrak{so}}
+  \newcommand{\gl}{\mathfrak{gl}}
+  \renewcommand{\sp}{\mathfrak{sp}}
+  \renewcommand{\sl}{\mathfrak{sl}}
+
+%%DECLARAR FUNCIONES
+ \DeclareMathOperator{\Span}{span}
+ \DeclareMathOperator{\Rk}{Rk}
+ \DeclareMathOperator{\dd}{d}
+ \DeclareMathOperator{\tr}{tr}
+ \DeclareMathOperator{\ad}{ad}
+ \DeclareMathOperator{\Id}{\mathbb{I}}
+
+
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+\def\G{\operatornamewithlimits{%
+ 		\mathchoice{\vcenter{\hbox{\Large $\mathfrak{S}$}}}
+ 		{\vcenter{\hbox{\large $\mathfrak{S}$}}}
+ 		{\mathrm{G}}
+ 		{\mathrm{G}}}}
+
+
+\begin{document}$ $\\
+\textbf{\Large Problemas de \'algebra exterior}\\
+\textbf{\large Andr\'es Rodr\'iguez}
+
+  \begin{ex}
+    Sean $V$ y $W$ espacios vectoriales sobre $\Fi$. Demostrar que para cada funci\'on lineal $f:V\to W$ el "pullback" $f^*: \mathscr{J}^k(W) \to \mathcal{J}^k(V)$ satisface las siguientes propiedades:
+    \begin{itemize}
+      \item[(i)] Para todos $S\in \mathcal{J}^m(W) $ y $T\in\mathcal{J}^k(W)$ se tiene
+      $$(f\circ g)^*T = (g^*\circ f^*)T$$
+      $$f^*(S\otimes T) = f^* S \otimes f^* T.$$
+      y
+      \item[(ii)] Para todos $\omega \in \Lambda ^m (W)$ y $\eta\in\Lambda^k(W)$
+      $$f^*(\omega\wedge\eta)= f^*\omega\wedge f^*\eta.$$
+    \end{itemize}
+  \end{ex}
+  \begin{proof}$ $\\
+    \begin{itemize}
+      \item[(i)] Sea $g$ una funci\'on lineal $g:U\to V$. Evaluamos $k$  vectores $v_1,\ldots,v_k\in U$ en $(f\circ g)^*T$:
+                  \begin{align*}
+                      (f\circ g) ^* T (v_1,\ldots,v_k) & = T((f\circ g) ^* (v_1),\ldots,(f\circ g) ^*(v_k)),\\
+                      &= T(f(g(v_1)),\ldots, f(g(v_k))),\\
+                      &= f^* T(g(v_1),\ldots,g(v_k)), \\
+                      &= (g^*\circ f^*) T(v_1,\ldots,v_k),\\
+                  \end{align*}
+                  por lo tanto, $(f\circ g)^*T =(g^*\circ f^*) T$.
+
+                  Similarmente, sean $v_1,\ldots,v_{m+k}\in V$:
+                  \begin{align*}
+                      f^*( S \otimes T )(v_1,\ldots,v_{m+k}) & = ( S \otimes T )(f(v_1),\ldots,f(v_{m+k})),\\
+                      &= S(f(v_1),\ldots, f(v_m)) \cdot T(f(v_{m+1}, \ldots, f(v_{m+k})),\\
+                      &= f^* S(v_1,\ldots,v_m)f^* T(v_{m+1},\ldots,v_{m+k}), \\
+                      &= f^* S\otimes f^* T(v_{1},\ldots,v_{m+k}), ,\\
+                  \end{align*}
+                  por lo tanto, $f^*( S \otimes T ) =  f^* S\otimes f^* T$.
+      \item[(ii)] Por la definici\'on de producto cu\~na:
+                  \begin{align*}
+                    f^* (\omega \wedge \eta) & = f^*\left(\frac{1}{m!k!}\sum_{\sigma \in S_{m+k}} \text{sgn}(\sigma) \sigma(\omega \otimes \eta)  \right) ,\\
+                    & = \frac{1}{m!k!}\sum_{\sigma \in S_{m+k}} \text{sgn}(\sigma) \sigma( f^*\left(\omega \otimes \eta)  \right) ,\\
+                    & = \frac{1}{m!k!}\sum_{\sigma \in S_{m+k}} \text{sgn}(\sigma) \sigma( f^*\omega \otimes f^* \eta)  \right),\\
+                    & = f^*\omega \wedge f^*\eta.
+                  \end{align*}
+    \end{itemize}
+  \end{proof}
+  \begin{ex}
+    Consideremos una funci\'on lineal $f:\Re^2 \to \Re^2$ definida por
+    $$f(e_1)=-e_2,\qquad f(e_2) = e_1,$$
+    donde $\{e_1,e_2\}$ es la base ortonormal para $\Re^2$. Sea $\{\phi^1,\phi^2\}$ la base dual. Calcule:
+    $$f^*(\phi^1), \, f^*(\phi^2), \, f^*(\phi^1\wedge \phi^2).$$
+  \end{ex}
+  \begin{proof}[Soluci\'on]$ $\\
+    Evaluamos en un vector $v:=v_1 e_1 + v_2 e_2 \in \Re^2$:
+      \begin{align*}
+        f^*(\phi^1) (v) & = \phi^1 (f(v)), \\ & = \phi^1(v_2e_1 - v_1 e_2),\\ &= v_2, \\ &= \phi^2 ( v);\\
+        f^*(\phi^2) (v) & = \phi ^2(f(v)), \\ & = \phi^2(v_2e_1 - v_1 e_2),\\ & = -v_1 ,\\ &= -\phi^1 ( v);
+      \end{align*}
+      por lo que, $f^*(\phi^1) = \phi^2$ y $f^*(\phi^2) = - \phi^1$. Luego,
+      \begin{align*}
+        f^*(\phi^1\wedge \phi^2) & = f^*\phi^1 \wedge f^*\phi^2,\\ &= \phi^2\wedge(- \phi^1),\\ & = \phi^1 \wedge \phi^2.
+      \end{align*}
+
+  \end{proof}
+\end{document}
