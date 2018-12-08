@@ -1,0 +1,497 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{dsfont}
+\usepackage{babel}
+\usepackage[a4paper, total={6in, 8.5in}]{geometry}
+\usepackage{multicol}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{xfrac}
+\usepackage{physics}
+\usepackage{calrsfs}
+\usepackage{mathrsfs}
+\usepackage{calligra}
+
+ \usepackage{layout}
+
+ \theoremstyle{plain}
+ \newtheorem{thm}{Teorema}
+ \newtheorem{prop}{Proposición}
+ \newtheorem{lema}{Lema}
+ \newtheorem{coro}{Corolario}
+
+ \theoremstyle{definition}
+ \newtheorem{defn}{Definición}
+ \newtheorem{exmp}{Ejemplo}
+  \newtheorem{ex}{Problema}
+
+ \theoremstyle{remark}
+ \newtheorem{nota}{Nota}
+
+
+ \newcommand{\ba}{\mathscr{B}}
+%%COMANDOS PARA CAMPOS
+ \renewcommand{\Re}{\mathbb{R}}
+ \newcommand{\Z}{\mathbb{Z}}
+ \newcommand{\Fi}{\mathbb{F}}
+ \newcommand{\co}{\mathbb{C}}
+%%COMANDOS PARA ÁLGEBRAS DE LIE
+  \newcommand{\g}{\mathfrak{{g}}}
+  \newcommand{\h}{\mathfrak{h}}
+  \newcommand{\so}{\mathfrak{so}}
+  \newcommand{\gl}{\mathfrak{gl}}
+  \renewcommand{\sp}{\mathfrak{sp}}
+  \renewcommand{\sl}{\mathfrak{sl}}
+
+%%DECLARAR FUNCIONES
+ \DeclareMathOperator{\Span}{span}
+ \DeclareMathOperator{\Rk}{Rk}
+ \renewcommand{\dd}{d}
+ %\DeclareMathOperator{\tr}{tr}
+ \DeclareMathOperator{\ad}{ad}
+ \DeclareMathOperator{\Id}{\mathbb{I}}
+
+
+\DeclareMathAlphabet{\mathcalligra}{T1}{calligra}{m}{n}
+
+\def\G{\operatornamewithlimits{%
+ 		\mathchoice{\vcenter{\hbox{\Large $\mathfrak{S}$}}}
+ 		{\vcenter{\hbox{\large $\mathfrak{S}$}}}
+ 		{\mathrm{G}}
+ 		{\mathrm{G}}}}
+
+
+\begin{document}$ $\\
+  \textbf{\Large Linear Algebra - Hoffman \& Kunze  (Problems)}\\\\
+  \textbf{\large Andr\'es Ignacio Rodr\'iguez Mendoza}\\
+  December 2018.
+  \\\\
+  \begin{center}
+    {\textbf{\LARGE First part}}
+  \end{center}
+  \section*{Section 3.5}
+
+    \paragraph{6.} Let $m$ and $n$ be positive integers and $\Fi$ a field. Let $f_1,\ldots,f_m$ be linear functionals on $\Fi^n$. For $\alpha$ in $\Fi^n$ define
+    $$T\alpha= (f_1(\alpha),\ldots,f_m(\alpha)).$$
+    Show that $T$ is a linear transformation from $\Fi^n$ into $\Fi^m$. Then show that every linear transformation from $F^n$ into $F^m$ is of the above form, for some $f_1,\ldots,f_m$
+    \begin{proof}$ $\\
+      The transformation $T$ is linear:
+      \begin{align*}
+        T (\alpha + c \beta)  & = (f_1(\alpha + c\beta),\ldots,f_m (\alpha + c\beta))\\
+                              & = (f_1(\alpha) + cf_1(\beta),\ldots,f_m (\alpha) + cf_m(\beta))\\
+                              & = (f_1(\alpha),\ldots,f_m (\alpha)) + c(f_1(\beta),\ldots,f_m(\beta))\\
+                              & = T\alpha + cT\beta.
+      \end{align*}
+      We show that for every linear transformation $T$ from $\Fi^n$ to $\Fi^m$ there exists $f_1,\ldots,f_m \in V^*$ such that $T\alpha= (f_1(\alpha),\ldots,f_m(\alpha)).$ Let $(\alpha_1,\ldots,\alpha_n):=\alpha$ be a vector $\alpha\in \Fi^n$ represented in the canonical basis $\ba$. Then we can write the linear transformation
+      $T\alpha = \left(\sum_{i=1}^na_{1i}\alpha_i,\ldots,\sum_{i=1}^na_{mi}\alpha_i \right)$, thus we define the linear functionals:
+      \begin{align*}
+        &f_1 : = \sum_{i=1}^na_{1i} \varphi^i,\\
+        &\vdots \\
+        &f_m : = \sum_{i=1}^na_{mi} \varphi^i;
+      \end{align*}
+      where $\{ \varphi_1,\ldots,\varphi^n\}$ is the basis dual to $\ba$. Hence, the linear transformation $T$ is
+      $$T = (f_1 ,\ldots,f_m).$$
+    \end{proof}
+
+  \section*{Section 3.7}
+
+    \paragraph{1.}
+    Let $\Fi$ be a field and let $f$ be the linear functional on $\Fi^2$ defined by $f(x_1,x_2)= ax_1+bx_2$. For each of the following linear operators $T$, let $g = T^t g$, and find $g(x_1,x_2)$.
+    \begin{itemize}
+      \item[(a)] $T(x_1,x_2)=(x_1,0)$;
+      \item[(b)] $T(x_1,x_2)=(-x_2,x_1)$;
+      \item[(c)] $T(x_1,x_2)=(x_1-x_2,x_1+x_2).$
+    \end{itemize}
+      \begin{proof}[Solution]$ $
+        \begin{itemize}
+          \item[(a)]
+            \begin{align*}
+              g(x_1,x_2)  & = T^t f(x_1,x_2)\\
+                          & = f(T(x_1,x_2))\\
+                          & = f(x_1,0)\\
+                          & = ax_1.
+            \end{align*}
+          \item[(b)]
+            \begin{align*}
+              g(x_1,x_2)  & = T^tf(x_1,x_2)\\
+                          & = f(T(x_1,x_2))\\
+                          & = f(-x_2,x_1)\\
+                          & = -ax_2 + bx_1.
+            \end{align*}
+          \item[(c)]
+            \begin{align*}
+              g(x_1,x_2)  & = T^tf(x_1,x_2)\\
+                          & = f(T(x_1,x_2))\\
+                          & = f(x_1-x_2,x_1+x_2)\\
+                          & = (a+b)x_1 + (b-a)x_2.
+            \end{align*}
+        \end{itemize}
+      \end{proof}
+
+  \section*{Section 8.1}
+
+    \paragraph{2.}
+    Let $V$ be a vector space over $\Fi$. Show that the sum of two inner products on $V$ is an inner product on $V$. Is the difference of two inner products an inner product? Show that a positive multiple of an inner product is an inner product.
+      \begin{proof}$ $\\
+        Let $\braket{\cdot}{\cdot}_1$ and $\braket{\cdot}{\cdot}_2$ be inner products on $V$. In order to $\braket{\cdot}{\cdot}$, defined by $\braket{\alpha}{\beta} =\braket{\alpha}{\beta}_1+ \braket{\alpha}{\beta}_2$ for all $\alpha, \, \beta \in V$, to be an inner product it must satisfy
+        \begin{itemize}
+          \item[(a)] $\braket{\alpha + \beta}{\gamma} = \braket{\alpha}{\gamma} +\braket{\beta}{\gamma}$,
+          \item[(b)] $\braket{c\alpha}{\beta}=c\braket{\alpha}{\beta}$,
+          \item[(c)] $\braket{\beta}{\alpha}= \overline{\braket{\alpha}{\beta}}$,
+          \item[(d)] $\braket{\alpha}{\alpha}>0$ if $\alpha \neq 0$.
+        \end{itemize}
+        Then
+        \begin{itemize}
+          \item[(a)]
+            \begin{align*}
+              \braket{\alpha + \beta}{\gamma} & = \braket{\alpha + \beta}{\gamma}_1 + \braket{\alpha + \beta}{\gamma}_2\\
+                                              & = \braket{\alpha}{\gamma}_1 + \braket{\alpha}{\gamma}_2 + \braket{\beta}{\gamma}_1 + \braket{\beta}{\gamma}_2\\
+                                              & = \braket{\alpha}{\gamma} +\braket{\beta}{\gamma}
+            \end{align*}
+          \item[(b)]
+            \begin{align*}
+              \braket{c\alpha}{\beta}   & = \braket{c\alpha}{\beta}_1 + \braket{c\alpha}{\beta}_2\\
+                                        & = c\braket{\alpha}{\beta}_1 + c\braket{\alpha}{\beta}_2\\
+                                        & = c(\braket{\alpha}{\beta}_1 +\braket{\alpha}{\beta}_2)\\
+                                        & = c\braket{\alpha}{\beta}
+            \end{align*}
+          \item[(c)]
+            \begin{align*}
+              \braket{\beta}{\alpha}  & = \braket{\beta}{\alpha}_1 + \braket{\beta}{\alpha}_2\\
+                                      & = \overline{\braket{\alpha}{\beta}}_1+  \overline{\braket{\beta}{\alpha}}_2\\
+                                      & = \overline{\braket{\alpha}{\beta}_1 + \braket{\beta}{\alpha}_2}\\
+                                      & = \overline{\braket{\alpha}{\beta}}
+            \end{align*}
+          \item[(d)]
+            \begin{align*}
+              \braket{\alpha}{\alpha} & =  \braket{\alpha}{\alpha}_1 + \braket{\alpha}{\alpha}_2 >0
+            \end{align*}
+        \end{itemize}
+        The difference of two inner products is in general \textit{not an inner product}. Indeed, let $\braket{\cdot}{\cdot}_2 = \braket{\cdot}{\cdot}_1$, then (d) isn't satisfied: $\braket{\alpha}{\alpha} = \braket{\alpha}{\alpha}_1 - \braket{\alpha}{\alpha}_1 = 0$.
+        A positive multiple of an inner product, defined by  $\braket{\alpha}{\beta}= \lambda \braket{\alpha}{\beta}_1$ with $\lambda >0$, is an inner product since it trivially holds (a), (b), (c) and (d).
+      \end{proof}
+
+  \section*{Section 8.2}
+
+    \paragraph{1.}
+    Consider $\Re^4$ with the standard inner product. Let $W$ be the subspace of $\Re^4$ consisting of all vectors which are orthogonal to both $\alpha=(1,0,-1,1)$ and $\beta =(2,3,-1,2)$. Find a basis for $W$.
+      \begin{proof}[Solution]$ $\\
+        Let $S:=\Span\{\alpha,\beta\}$ and $W$ the subspace orthogonal to $S$. We know that $\dim W + \dim S = \dim V$, therefore a basis for $W$ is a set of two linearly independent solutions to
+        $$  \left( \begin{matrix}
+                      1 & 0 & -1 & 1 \\
+                      2 & 3 & -1 & 2
+            \end{matrix} \right) \left( \begin{matrix} w_1 \\ w_2 \\ w_3 \\ w_4 \end{matrix} \right) = \left( \begin{matrix} 0 \\ 0 \end{matrix} \right).
+        $$
+        Hence, we may choose $\{e_1,e_2\}$ as basis for $W$, where $e_1 = (2,-1,3,1)$ and $e_2= (1,\sfrac{1}{3},-1,-2)$.
+      \end{proof}
+    \paragraph{9.}
+    Let $V$ be the subspace of $\Re[x]$ of polynomials of degree at most 3. Equip $V$ with the inner products
+    $$\bra{f}\ket{g} = \int_0^1 f(t)g(t)dt.$$
+    \begin{itemize}
+      \item[(a)] Find the orthogonal complement of the subspace of scalar polynomials.
+      \item[(b)] Apply the Gram-Schmidt process to the basis $\{1,x,x^2,x^3\}$.
+    \end{itemize}
+      \begin{proof}[Solution]$ $
+        \begin{itemize}
+          \item[(a)] We shall answer this with the results of (b).
+          \item[(b)] Since $\dim V = 4$ we need to find
+            \begin{align*}
+              &\alpha_1 = 1,\\
+              &\alpha_2 = x - \frac{\braket{x}{\alpha_1}}{\norm{\alpha_1}^2} \alpha_1,\\
+              &\alpha_3 = x^2 - \frac{\braket{x^2}{\alpha_1}}{\norm{\alpha_1}^2} \alpha_1- \frac{\braket{x^2}{\alpha_2}}{\norm{\alpha_2}^2} \alpha_2,\\
+              &\alpha_4 = x^3 - \frac{\braket{x^3}{\alpha_1}}{\norm{\alpha_1}^2} \alpha_1 - \frac{\braket{x^3}{\alpha_2}}{\norm{\alpha_2}^2} \alpha_2 - \frac{\braket{x^3}{\alpha_3}}{\norm{\alpha_3}^2} \alpha_3,
+            \end{align*}
+            Calculating
+            \begin{align*}
+              &\braket{x}{\alpha_1} = \frac{1}{2},                                               &&   \norm{\alpha_1}^2 = 1 , \\
+              &\alpha_2 = x-\frac{1}{2},                                                         &&   \\
+              &\braket{x^2}{\alpha_1} = \frac{1}{3},                                              &&   \norm{\alpha_2}^2 = \int_0^1 x^2 - x + \frac{1}{4}  \dd x =\frac{1}{12},           \\
+              &\braket{x^2}{\alpha_2} =  \int_0^1 x^3 - \frac{1}{2}x^2 \dd x =\frac{1}{12},       &&   \\
+              & \alpha_3 = x^2 - x + \frac{1}{6},                                                &&   \\
+              &\braket{x^3}{\alpha_1} = \frac{1}{4},                                             &&  \norm{\alpha_3}^2 = \int_0^1 \left(x^2-x+\frac{1}{6}\right)^2 \dd x = \frac{1}{180}, \\
+              &\braket{x^3}{\alpha_2} =\int_0^1 x^4 - \frac{1}{2}x^3 dx  = \frac{3}{40},          &&  \\
+              &\braket{x^3}{\alpha_3} = \int_0^1 x^5 - x^4 +\frac{1}{6}x^3 \dd x  = \frac{1}{120}, &&     \\
+              & \alpha_4 = x^3- \frac{3}{4}x^2 + \frac{3}{5}x -\frac{1}{20}.  &&
+            \end{align*}
+            Thus, we get an orthogonal basis:
+            \begin{align*}
+              & \alpha_1 = 1,\\
+              & \alpha_2 = x-\frac{1}{2},\\
+              & \alpha_3 = x^2 - x + \frac{1}{6},\\
+              & \alpha_4 = x^3- \frac{3}{4}x^2 + \frac{3}{5}x -\frac{1}{20}.
+            \end{align*}
+        \end{itemize}
+        Finally, the answer to (a) is: $W:=\Span \{\alpha_2,\alpha_3,\alpha_4\}$ is the orthogonal complement of the subspace of scalar polynomials.
+      \end{proof}
+
+  \section*{Section 8.3}
+
+    \paragraph{5.}
+    Let $V$ be a finite-dimensional inner product space and $T$ a linear operator on $V$. If $T$ is invertible, show that $T^*$ is invertible and $(T^*)^{-1} = (T^{-1})^*$.
+
+      \begin{proof}$ $\\
+          Since $T$ is invertible, it follows:
+          \begin{align*}
+            \bra{\alpha}\ket{\beta} & = \bra{T^{-1}T\alpha}\ket{\beta},\\
+                &= \bra{T\alpha}\ket{(T^{-1})^*\beta},\\
+                &=\bra{\alpha}\ket{T^*(T^{-1})^*\beta}.
+          \end{align*}
+          Hence, $T^*(T^{-1})^* = \Id$, for which $T^*$ is invertible and $(T^*)^{-1} = (T^{-1})^* $.
+
+      \end{proof}
+
+  \section*{Section 8.4}
+
+    \paragraph{1.}
+    Find a unitary matrix which is not orthogonal, and find an orthogonal matrix which is not unitary.
+      \begin{proof}[Solution]$ $\\
+        The matrix:
+        $$ A:=\left( \begin{matrix}
+            \frac{1}{\sqrt{3}} & i\sqrt{\frac{2}{3}} \\
+            i\sqrt{\frac{2}{3}}        & \frac{1}{\sqrt{3}}
+        \end{matrix} \right)$$
+        is \textit{unitary and not ortogonal}. Indeed:
+        \begin{align*}
+          A^* A & = \left(\begin{matrix}
+          \frac{1}{\sqrt{3}} & -i\sqrt{\frac{2}{3}} \\
+          -i\sqrt{\frac{2}{3}}        & \frac{1}{\sqrt{3}}
+          \end{matrix} \right)\left(\begin{matrix}
+          \frac{1}{\sqrt{3}} & i\sqrt{\frac{2}{3}} \\
+          i\sqrt{\frac{2}{3}}        & \frac{1}{\sqrt{3}}
+          \end{matrix}\right),\\
+          & = \left( \begin{matrix}
+              \frac{1}{3} + \frac{2}{3} &  i\frac{\sqrt{2}}{3} - i\frac{\sqrt{2}}{3}\\
+              -i\frac{\sqrt{2}}{3} + i\frac{\sqrt{2}}{3}& \frac{2}{3} + \frac{1}{3}
+          \end{matrix} \right),\\
+          &= \left( \begin{matrix}
+              1 & 0\\
+              0 & 1
+          \end{matrix} \right),\\
+          A^t A & = \left(\begin{matrix}
+          \frac{1}{\sqrt{3}} & i\sqrt{\frac{2}{3}} \\
+          i\sqrt{\frac{2}{3}}   & \frac{1}{\sqrt{3}}
+          \end{matrix} \right)\left(\begin{matrix}
+          \frac{1}{\sqrt{3}} & i\sqrt{\frac{2}{3}} \\
+          i\sqrt{\frac{2}{3}}   & \frac{1}{\sqrt{3}}
+          \end{matrix} \right),\\
+          & = \left( \begin{matrix}
+              \frac{1}{3} - \frac{2}{3} &  i\frac{\sqrt{2}}{3} + i\frac{\sqrt{2}}{3}\\
+              i\frac{\sqrt{2}}{3} + i\frac{\sqrt{2}}{3}& -\frac{2}{3} + \frac{1}{3}
+          \end{matrix} \right),\\
+          &= \left( \begin{matrix}
+              -\frac{1}{3} & 2i\frac{\sqrt{2}}{3}\\
+              2i\frac{\sqrt{2}}{3} & -\frac{1}{3}
+          \end{matrix} \right).
+        \end{align*}
+        The matrix:
+        $$ B:=\left(\begin{matrix}
+            \sqrt{2} & i \\
+            i        & -\sqrt{2}
+        \end{matrix} \right),$$
+        is \textit{orthogonal and not unitary}. Indeed:
+        \begin{align*}
+          B^* B & = \left(\begin{matrix}
+              \sqrt{2} & -i  \\
+              -i        & -\sqrt{2}
+          \end{matrix} \right)\left(\begin{matrix}
+              \sqrt{2} & i \\
+              i        & -\sqrt{2}
+          \end{matrix}\right),\\
+          & = \left( \begin{matrix}
+              2+1 &  i\sqrt{2} + i\sqrt{2}\\
+              -i\sqrt{2}- i\sqrt{2} & 1+2
+          \end{matrix} \right),\\
+          &= \left( \begin{matrix}
+              3 &  2 i\sqrt{2}\\
+              -2 i\sqrt{2} & 3
+          \end{matrix} \right),\\
+          B^t B & = \left(\begin{matrix}
+              \sqrt{2} & i  \\
+              i        & -\sqrt{2}
+          \end{matrix} \right)\left(\begin{matrix}
+              \sqrt{2} & i \\
+              i        & -\sqrt{2}
+          \end{matrix}\right),\\
+          & = \left( \begin{matrix}
+              2-1 &  i\sqrt{2} - i\sqrt{2}\\
+              i\sqrt{2}- i\sqrt{2} & -1+2
+          \end{matrix} \right),\\
+          &= \left( \begin{matrix}
+              1 & 0\\
+              0 & 1
+          \end{matrix} \right),\\
+        \end{align*}
+      \end{proof}
+  \section*{Section 8.5}
+
+    \paragraph{2.}
+    Is a complex symmetric matrix self-adjoint? Is it normal?
+      \begin{proof}[Solution]$ $\\
+        A complex symmetric matrx is in general \textit{neither self-adjoint nor normal}. Counterexample, let $A\in M_{2}(\co)$ be the symmetric matrix
+        $$A:= \begin{bmatrix}
+                1 & i\\
+                i & -1
+              \end{bmatrix}.$$
+        The matrix $A$ is not self-adjoint, i.e. $A\neq A^*$:
+        $$A^*= \begin{bmatrix}
+                            1 & -i\\
+                            -i & -1
+                          \end{bmatrix} \neq A. $$
+        The matrix $A$ is not normal, i.e. $AA^* \neq A^*A$:
+        \begin{align}
+          AA^* & =           2\begin{bmatrix}
+                              1 & -i\\
+                              i &  1
+                            \end{bmatrix},\\
+          A^*A & =          2\begin{bmatrix}
+                              1  &  i\\
+                              -i &  1
+                            \end{bmatrix}\\
+              & \neq AA^*.
+        \end{align}
+      \end{proof}
+    \paragraph{10.}
+    Prove that every positive matrix is the square of a positive matrix.
+      \begin{proof}$ $\\
+        Let $A\in M_n (\co)$ positive. Then, $A$ is Hermitian and by the corollary of theorem 18 (section 8.5) there is a unitary matrix $P$ such that $\Lambda := P^{-1}AP$ is diagonal. Therefore, we have $\Lambda = \text{diag} (\lambda_1,\ldots,\lambda_n)$ with $\lambda _j >0$ for all $j=1,\ldots,n$ since $A$ is a positive the matrix.\\\\
+        Define $\Lambda^{\sfrac{1}{2}} : = \text{diag}(\sqrt{\lambda_1},\ldots, \sqrt{\lambda_n})$ and $B := P \Lambda^{\sfrac{1}{2}} P^{-1}$, then $B$ is a positive matrix and
+        \begin{align*}
+          B^2 & := B B \\
+              & =  P \Lambda^{\sfrac{1}{2}} P^{-1} P \Lambda^{\sfrac{1}{2}} P^{-1}\\
+              & = P \Lambda^{\sfrac{1}{2}} \Lambda^{\sfrac{1}{2}} P^{-1}\\
+              & = P \Lambda P^{-1}\\
+              & = A.
+        \end{align*}
+
+
+      \end{proof}
+
+
+\begin{center}
+  \vspace{1.5cm}
+        {\textbf{\LARGE Second part}}
+\end{center}
+  \section*{Section 9.2}
+    \paragraph{1.} Which of the following functions $f$, defined on vectors $\alpha = (x_1, x_2)$ and $\beta =
+      (y_1, y_2)$ in $C^2$, are (sesqui-linear) forms on $C^2$?
+        \begin{itemize}
+              \item[(a)] $f(\alpha,\beta) =1$.
+              \item[(b)] $f(\alpha,\beta) =(x_1  -\bar{y}_1)^2 + x_2\bar{y}_2$.
+              \item[(c)] $f(\alpha,\beta) = (x_1 + \bar{y}_1)^2 - (x_1-\bar{y}_1)^2$.
+              \item[(d)] $f(\alpha,\beta) = x_1\bar{y}_2 - \bar{x}_2y_1$.
+        \end{itemize}
+      \begin{proof}[Solution]$ $
+        \begin{itemize}
+              \item[(a)] No, $f(\alpha+\beta,\gamma) = 1 \neq f(\alpha,\gamma)+f(\beta,\gamma)$.
+              \item[(b)] No, $f(\alpha,c\beta+\gamma) \neq \bar{c}f(\alpha,\beta) +f(\alpha,\gamma)$.
+              \item[(c)] Yes,
+                  \begin{align*}
+                    &f(\alpha + c\beta,\gamma)  = 4 x_1 \bar{z}_1 +  4cy_1\bar{z}_1=f (\alpha,\gamma) +cf(\beta,\gamma)\\
+                    &f(\alpha, c\beta +  \gamma)  = 4\bar{c} x_1\bar{y}_1 + 4 x_1 \bar{z}_1 = \bar{c}f(\alpha,\beta) +f(\alpha,\gamma)
+                  \end{align*}
+              \item[(d)] No, $f(\alpha,c\beta + \gamma) = \bar{c} x_1\bar{y}_2 - c \bar{x}_2y_1 +x_1\bar{z}_2 -  \bar{x}_2z_1 \neq  \bar{c}f(\alpha,\beta) + f(\alpha,\gamma)$.
+        \end{itemize}
+      \end{proof}
+
+
+    \paragraph{9.}
+      Let $f$ be a non-degenerate form on a finite-dimensional space $V$. Show that each linear operator $S$ has an 'adjoint relative to f', i.e., an operator $S’$ such that
+        $$f(S\alpha, \beta) = f(\alpha, S’\beta) \quad \text{for all} \quad \alpha,\beta.$$
+      \begin{proof}$ $\\
+        We define
+        \begin{align*}
+          &\ell : V \to V^* \ : \ \beta \to (\alpha \to f(S\alpha,\beta)),\\
+        \end{align*}
+        and for each $\beta\in V$ we write $\ell(\beta) = \ell_{\beta}\in V^*$. Since $f$ is non-degenerate and $\ell_{\beta}$ is a linear functional on $V$, by exercise 8 (section 9.2) there exists a unique $\beta'\in V$ such that
+        $$\ell_{\beta} (\alpha) = f(\alpha,\beta'),$$
+        i.e.
+        $$f(S\alpha,\beta) = f(\alpha,\beta').$$
+        Let $S$ be the operator which maps $\beta$ to $\beta'$ ($f(S\alpha,\beta) = f(\alpha,S'\beta)$). It remains to prove that $S$ is linear:
+        \begin{align}
+            f(\alpha,S'(\beta + c \gamma))  & = f (S \alpha, \beta +c \gamma)\\
+                                            & = f (S \alpha,\beta) + cf(S\alpha,\gamma)\\
+                                            & = f (\alpha,S'\beta) + cf(\alpha,S'\gamma)\\
+                                            & = f(\alpha, S'\beta + cS'\gamma).
+        \end{align}
+        Hence, $S'(\beta + c \gamma)= S'\beta + cS'\gamma$.
+      \end{proof}
+
+
+  \section*{Section 9.3}
+
+    \paragraph{7.}
+      Give an example of an $n\times n$ matrix which has all its principal minors positive, but which is not a positive matrix.
+      \begin{proof}[Solution]$ $\\
+        Consider the matrix
+        $$A := \begin{bmatrix}
+                1 & 1 & 1 \\
+                1 & 0 & 1 \\
+                1 & 0 & 0
+        \end{bmatrix}.$$
+        The principal minors of $A$ are
+        $$\Delta_1(A) = 1, \quad \Delta_2(A) = 1, \quad \Delta_3(A) = 1;$$
+        and $A$ isn't a positive matrix since $A^t\neq A$.
+      \end{proof}
+    \paragraph{14.}
+      Prove that the product of two positive linear operators is positive if and only if they commute.
+      \begin{proof}$ $\\
+        Let $T_1$ and $T_2$ be positive operators, then $(T_i)^* = T_i$ and $\braket{T_i\alpha}{\alpha}>0$ for all $\alpha\neq 0$ in $V$. We show that if $T_1T_2$ is positive then $T_1T_2 = T_2T_1$:
+        \begin{itemize}
+          \item[ ] Since $T_1$, $T_2$ and $T_1T_2$ are positive, it follows
+          \begin{align*}
+            T_1T_2   & = (T_1T_2)^*\\
+                         & = T_2^*T_1^*\\
+                         & = T_2 T_1.
+          \end{align*}
+        \end{itemize}
+        Conversely, we show that if $T_1T_2=T_2T_1$ then $(T_1T_2)^*=T_1T_2$ and $\braket{T_1T_2 \alpha}{\alpha}>0$ for all $\alpha\neq 0$:
+        \begin{itemize}
+          \item[ ] For the first part, $T_1T_2 = T_2T_1=T_2^*T_1^* =(T_1T_2)^*$.  For the second part, we have from the problem 10 of section 8.5 that on each basis the matrix of $T_i$ is the square of a positive matrix. Let $B$ be the operator $B^2 =T_2$, then $T_1BB=BBT_1=BB^*T_1^* = BT_1 B$, hence
+          $$\braket{T_1BB\alpha}{\alpha}=\braket{BT_1B\alpha}{\alpha} = \braket{T_1B\alpha}{B\alpha} =\braket{T_1\tilde{\alpha}}{\tilde{\alpha}}>0.$$
+        \end{itemize}
+      \end{proof}
+  \section*{Section 10.1}
+    \paragraph{5.}
+      Describe the bilinear forms on $R^3$ which satisfy $f(\alpha,\beta) = -f(\beta,\alpha)$ for all $\alpha,\beta$.
+      \begin{proof}[Solution]$ $\\
+        We choose the canonical basis $\{e_1,e_2,e_3\}$ for $\Re^3$, and let:
+        $$
+        A : = (f(e_i,e_j)) = \begin{bmatrix}
+                                0       & A_{12}  & -A_{31} \\
+                                -A_{12} & 0       & A_{23} \\
+                                A_{31} & -A_{23} & 0       \\
+                              \end{bmatrix}
+        $$
+        where $A_{ij} = f(e_i,e_j)$. Then, for vectors $\alpha=(\alpha_1,\alpha_2,\alpha_3)$ and $\beta=(\beta_1,\beta_2,\beta_3)$ on $\Re^3$ we get
+        \begin{align*}
+          f(\alpha,\beta)   & = [\alpha]^t A [\beta] \\
+                            & = A_{12}(\alpha_1 \beta_2 - \alpha_2\beta_1) + A_{23}(\alpha_2 \beta_3 - \alpha_3\beta_2) + A_{31}(\alpha_3 \beta_1 - \alpha_3\beta_1).
+        \end{align*}
+
+      \end{proof}
+  \section*{Section 10.2}
+    \paragraph{5.}
+      Let $q$ be the quadratic form on $\Re^2$ given by
+      $$q(x_1,x_2)=ax_1^2+2bx_1x_2 + cx_2^2, \qquad a\neq 0.$$
+      Find an invertible linear operator $U$ on $\Re^2$ such that
+      $$(U^{\dagger} q)(x_1,x_2) = ax_1^2 + \left(c- \frac{b^2}{a} \right)x_2^2,$$
+      \begin{proof}[Solution]$ $\\
+        Completing the square,
+          \begin{align*}
+            q(x_1,x_2)  & = a x_1^2+2bx_1x_2 + cx_2^2\\
+                        & = a \left(x_1 + \frac{b}{a}x_2 \right)^2 + \left(c-\frac{b^2}{a}\right)x_2^2\\
+                        & = q(U^{-1}U(x_1,x_2)),
+          \end{align*}
+          then, $U^{-1}(\tilde{x}_1,\tilde{x}_2) =\left( \tilde{x}_1 + \frac{b}{a}\tilde{x}_2, \tilde{x}_2 \right)$. Therefore, $$U^{}({x}_1,{x}_2) =\left( {x}_1 - \frac{b}{a}{x}_2, {x}_2 \right).$$
+          Indeed
+          \begin{align*}
+            q(U(x_1,x_2))  & = a \left(x_1 + \frac{b}{a}x_2 \right)^2 + \left(c-\frac{b^2}{a}\right)x_2^2\\
+                        & = (U^{\dagger}q)(x_1,x_2).
+          \end{align*}
+      \end{proof}
+
+
+
+\end{document}
